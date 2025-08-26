@@ -29,6 +29,9 @@ testing <- testing[,-1]
 ```
 
 ```{r data cleaning}
-## Remove non-predicting variables
+## Remove features with near-zero variance
+NZV <- nearZeroVar(training)
 
+training <- training[,-NZV]
+testing <- testing[,-NZV]
 ```
