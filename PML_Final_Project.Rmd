@@ -21,11 +21,6 @@ library(gbm)
 ```{r import data}
 training <- read.csv("data/pml-training.csv")
 testing <- read.csv("data/pml-testing.csv")
-
-## Remove First ID Column
-
-training <- training[,-1]
-testing <- testing[,-1]
 ```
 
 ```{r data cleaning}
@@ -34,4 +29,16 @@ NZV <- nearZeroVar(training)
 
 training <- training[,-NZV]
 testing <- testing[,-NZV]
+
+## Remove features not contributing to accelerometer readings
+
+col_rm <- grepl("^X|timestamp|user_name", names(training))
+training <- training[, !col_rm]
+testing <- testing[, !col_rm]
+
+## Remove columns with a majority of missing values
+
+na_cols <- sapply(training, function(x) mean(is.na(x))) >.95
+training <- training[,!na_cols]
+testing <- testing[,!na_cols]
 ```
