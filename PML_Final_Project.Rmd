@@ -1,0 +1,34 @@
+---
+title: "PML_Final_Project"
+author: "Viswathish Dinesh"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries, include=FALSE}
+## Output has been muted to prevent unnecessary text
+library(caret)
+library(rpart)
+library(rpart.plot)
+library(randomForest)
+library(gbm)
+```
+
+```{r import data}
+training <- read.csv("data/pml-training.csv")
+testing <- read.csv("data/pml-testing.csv")
+
+## Remove First ID Column
+
+training <- training[,-1]
+testing <- testing[,-1]
+```
+
+```{r data cleaning}
+## Remove non-predicting variables
+
+```
