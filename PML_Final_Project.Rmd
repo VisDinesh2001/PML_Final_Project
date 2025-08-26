@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Load Libraries
+
 ```{r libraries, include=FALSE}
 ## Output has been muted to prevent unnecessary text
 library(caret)
@@ -18,10 +20,14 @@ library(randomForest)
 library(gbm)
 ```
 
+# Load Data
+
 ```{r import data}
 training <- read.csv("data/pml-training.csv")
 testing <- read.csv("data/pml-testing.csv")
 ```
+
+# Data Cleaning
 
 ```{r data cleaning}
 ## Remove features with near-zero variance
@@ -42,3 +48,6 @@ na_cols <- sapply(training, function(x) mean(is.na(x))) >.95
 training <- training[,!na_cols]
 testing <- testing[,!na_cols]
 ```
+
+
+
