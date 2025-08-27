@@ -9,7 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Load Libraries
+# Pre Analysis
+
+## Load Libraries
 
 ```{r libraries, include=FALSE}
 ## Output has been muted to prevent unnecessary text
@@ -20,14 +22,14 @@ library(randomForest)
 library(gbm)
 ```
 
-# Load Data
+## Load Data
 
 ```{r import data}
 training <- read.csv("data/pml-training.csv")
 testing <- read.csv("data/pml-testing.csv")
 ```
 
-# Data Cleaning
+## Data Cleaning
 
 ```{r data cleaning}
 ## Remove features with near-zero variance
@@ -44,10 +46,21 @@ testing <- testing[, !col_rm]
 
 ## Remove columns with a majority of missing values
 
-na_cols <- sapply(training, function(x) mean(is.na(x))) >.95
+na_cols <- sapply(training, function(x) mean(is.na(x))) > 0.95
 training <- training[,!na_cols]
 testing <- testing[,!na_cols]
+
+## Set "classe" feature as factor
+training$classe <- factor(training$classe)
 ```
 
+# Creating the model
 
+## Split the data into training and validation sets
 
+```{r training v validation}
+set.seed(12345) # Set seed for reproducibility
+inTrain <- createDataPartition(training$classe, p = 0.70, list = FALSE)
+train_data <- training[inTrain,]
+valid_data <- training[-inTrain,]
+```
