@@ -70,7 +70,7 @@ Our environment and our data is now ready for processing and prediction.
 
 ## Split the data into training and validation sets
 
-Before training the model on the training data set, we must split it into training and validation data sets. The validation set will allow us to test the accuracy of the model on unseen data.
+Before training the model on the training data set, we must split it into training and validation data sets. The validation set will allow us to test the accuracy of the model on unseen data. We will split the data 70/30 for training against validation.
 
 ```{r training v validation}
 set.seed(12345) # Set seed for reproducibility
@@ -116,4 +116,4 @@ predictTest <- predict(modelFit, newdata = testing)
 predictTest
 ```
 
-The actual values of the "classe" outcome for the testing data can be found in the "Course Project Prediction Quiz". After entering the predicted value for each test case into the quiz, the outcome showed that the model predicted 100% of the values correctly.
+The true values of the "classe" outcome for the testing data can be found in the "Course Project Prediction Quiz". After entering the predicted value for each test case into the quiz, the outcome showed that the model predicted 100% of the values correctly. Therefore, the out-of-sample error rate is 0%, even less so than what was seen in the validation step. Typically, this error rate is expected to be higher on unseen test data than in validation data. This discrepancy can likely be attributed to the small sample size of the test data. 
