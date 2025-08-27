@@ -91,4 +91,10 @@ The accuracy of this model on the validation data is `r con_matrix$overall[1]`. 
 
 # Predicting outcomes of testing data
 
-Need to remove
+```{r model on test data, cache=TRUE}
+set.seed(12345) ## Set seed for reproducibility
+## Predict values using model
+predictTest <- predict(modelFit, newdata = testing)
+predictTest
+```
+
