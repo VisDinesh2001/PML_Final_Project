@@ -64,3 +64,14 @@ inTrain <- createDataPartition(training$classe, p = 0.70, list = FALSE)
 train_data <- training[inTrain,]
 valid_data <- training[-inTrain,]
 ```
+
+## Create the model on the training data
+
+The model will be created using the random forest method.
+
+```{r model creation, cache=TRUE}
+set.seed(12345) # Set seed for reproducibility
+## Add training method for cross validation
+train_control <- trainControl(method = "cv", number = 5)
+modelFit <- train(classe ~ ., data = train_data, method = "rf", ntree = 250, trControl = train_control)
+```
