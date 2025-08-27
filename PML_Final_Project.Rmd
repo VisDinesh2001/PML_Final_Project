@@ -28,6 +28,8 @@ library(caret)
 
 ## Load Data
 
+The data will be loaded into R. The training data can be found [here](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv). The test data can be found [here](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv). This data was downloaded on August 25, 2025.
+
 ```{r import data, cache = TRUE}
 training <- read.csv("data/pml-training.csv")
 testing <- read.csv("data/pml-testing.csv")
