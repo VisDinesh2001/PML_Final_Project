@@ -98,3 +98,4 @@ predictTest <- predict(modelFit, newdata = testing)
 predictTest
 ```
 
+The actual values of the "classe" outcome for the testing data can be found in the "Course Project Prediction Quiz". After entering the predicted value for each test case into the quiz, the outcome showed that the model predicted 100% of the values correctly.
