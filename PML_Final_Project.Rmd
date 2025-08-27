@@ -116,4 +116,6 @@ predictTest <- predict(modelFit, newdata = testing)
 predictTest
 ```
 
-The true values of the "classe" outcome for the testing data can be found in the "Course Project Prediction Quiz". After entering the predicted value for each test case into the quiz, the outcome showed that the model predicted 100% of the values correctly. Therefore, the out-of-sample error rate is 0%, even less so than what was seen in the validation step. Typically, this error rate is expected to be higher on unseen test data than in validation data. This discrepancy can likely be attributed to the small sample size of the test data. 
+# Conclusion
+
+The true values of the "classe" outcome for the testing data can be found in the "Course Project Prediction Quiz". After entering the predicted value for each test case into the quiz, the outcome showed that the model predicted 100% of the values correctly. Therefore, the out-of-sample error rate is 0%, even less so than what was seen in the validation step. Typically, this error rate is expected to be higher on unseen test data than in validation data. This discrepancy can likely be attributed to the small sample size of the test data.
