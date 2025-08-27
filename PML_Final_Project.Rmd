@@ -24,7 +24,7 @@ library(gbm)
 
 ## Load Data
 
-```{r import data}
+```{r import data, cache = TRUE}
 training <- read.csv("data/pml-training.csv")
 testing <- read.csv("data/pml-testing.csv")
 ```
@@ -86,3 +86,9 @@ predictValid <- predict(modelFit, newdata = valid_data)
 con_matrix <- confusionMatrix(predictValid, valid_data$classe)
 con_matrix
 ```
+
+The accuracy of this model on the validation data is `r con_matrix$overall[1]`. The estimated out-of-sample error is `r 1-con_matrix$overall[1]`.
+
+# Predicting outcomes of testing data
+
+Need to remove
