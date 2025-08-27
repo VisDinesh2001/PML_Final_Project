@@ -37,6 +37,10 @@ testing <- read.csv("data/pml-testing.csv")
 
 ## Data Cleaning
 
+There are many unnecessary columns and variables included in both data sets. Some of these columns contain almost no data (a very large number of NA values), whilst other columns are descriptors for the data point itself, rather than the accelerometer readings that we are interested in using. There are also columns that have near-zero variance, indicating that they are near constant values, which is not useful for prediction, and can introduce unwanted artifacts to the training models.
+
+Furthermore, the "classe" variable was read in as a "character" variable. To ensure proper prediction, we will convert this column to a "factor" variable.
+
 ```{r data cleaning}
 ## Remove features with near-zero variance
 NZV <- nearZeroVar(training)
