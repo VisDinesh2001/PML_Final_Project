@@ -9,17 +9,21 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Introduction
+
+This project aims to use accelerometer data to predict the class of exercise performed. The training and test data have been provided, with the training data containing the "classe" variable, which is what needs to be predicted in the test dataset.
+
 # Pre Analysis
 
+Before any analysis can begin, we need to complete some cursory steps to get our environment and our data ready.
+
 ## Load Libraries
+
+The following package must be loaded for this analysis to create and test the model fit we will train on the training data.
 
 ```{r libraries, include=FALSE}
 ## Output has been muted to prevent unnecessary text
 library(caret)
-library(rpart)
-library(rpart.plot)
-library(randomForest)
-library(gbm)
 ```
 
 ## Load Data
