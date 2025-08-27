@@ -66,7 +66,11 @@ training$classe <- factor(training$classe)
 
 # Creating the model
 
+Our environment and our data is now ready for processing and prediction.
+
 ## Split the data into training and validation sets
+
+Before training the model on the training data set, we must split it into training and validation data sets. The validation set will allow us to test the accuracy of the model on unseen data.
 
 ```{r training v validation}
 set.seed(12345) # Set seed for reproducibility
@@ -77,7 +81,7 @@ valid_data <- training[-inTrain,]
 
 ## Create the model on the training data
 
-The model will be created using the random forest method.
+The model will be created using the random forest method, as it has been shown to be a very robust prediction method with high accuracy. The "trainControl" parameter will allow us to perform 5-fold cross validation to further improve accuracy.
 
 ```{r model creation, cache=TRUE}
 set.seed(12345) ## Set seed for reproducibility
@@ -87,6 +91,8 @@ modelFit <- train(classe ~ ., data = train_data, method = "rf", ntree = 250, trC
 ```
 
 ## Test the model on the validation data
+
+Now that our model has been created, we can predict the "classe" variable of the validation data set with it. A confusion matrix has been used to cross-check the predicted outcomes against the actual outcomes.
 
 ```{r validation, cache = TRUE}
 set.seed(12345) ## Set seed for reproducibility
@@ -100,6 +106,8 @@ con_matrix
 The accuracy of this model on the validation data is `r con_matrix$overall[1]`. The estimated out-of-sample error is `r 1-con_matrix$overall[1]`.
 
 # Predicting outcomes of testing data
+
+Since our model seems to be highly accurate, we can now use the same model to predict the outcomes of the testing data using the same method we used for predicting the validation data. The outcomes have been printed below the code chunk.
 
 ```{r model on test data, cache=TRUE}
 set.seed(12345) ## Set seed for reproducibility
